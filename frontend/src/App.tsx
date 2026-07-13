@@ -1,11 +1,15 @@
-function App() {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainLayout from "./components/layouts/MainLayout";
+import Dashboard from "./pages/Dashboard/Dashboard";
+
+export default function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <h1 className="text-5xl font-bold text-blue-600">
-        Biz Tracker
-      </h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Dashboard />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
