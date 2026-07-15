@@ -1,3 +1,5 @@
+import StatsGrid from "../../components/Dashboard/StatsGrid";
+import DashboardGrid from "../../components/Dashboard/DashboardGrid";
 import { useDashboard } from "../../hooks/usedashboard";
 
 export default function Dashboard() {
@@ -7,17 +9,22 @@ export default function Dashboard() {
     return <p>Loading dashboard...</p>;
   }
 
-  if (error) {
+  if (error || !data) {
     return <p>Failed to load dashboard.</p>;
   }
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold">Dashboard</h1>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold">Dashboard</h1>
+        <p className="text-gray-500">
+          Welcome back to Biz Tracker.
+        </p>
+      </div>
 
-      <pre className="mt-6 rounded-lg bg-slate-900 p-4 text-white overflow-auto">
-        {JSON.stringify(data, null, 2)}
-      </pre>
+      <StatsGrid data={data} />
+
+      <DashboardGrid data={data} />
     </div>
   );
 }

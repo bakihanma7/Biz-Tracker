@@ -19,25 +19,29 @@ ChartJS.register(
   Legend
 );
 
-const data = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-
-  datasets: [
-    {
-      label: "Revenue",
-
-      data: [4200, 5100, 6000, 7400, 8200, 9500],
-
-      borderColor: "#2563eb",
-
-      backgroundColor: "#93c5fd",
-
-      tension: 0.4,
-    },
-  ],
+type Props = {
+  chartData: number[];
 };
 
-export default function RevenueChart() {
+export default function RevenueChart({ chartData }: Props) {
+  const data = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+
+    datasets: [
+      {
+        label: "Revenue",
+
+        data: chartData,
+
+        borderColor: "#2563eb",
+
+        backgroundColor: "#93c5fd",
+
+        tension: 0.4,
+      },
+    ],
+  };
+
   return (
     <div className="bg-white rounded-xl shadow-sm p-6">
       <h2 className="text-xl font-semibold mb-4">
